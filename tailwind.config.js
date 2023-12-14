@@ -5,6 +5,7 @@ import defaultTheme from "tailwindcss/defaultTheme"
 export default {
   darkMode: "class",
   content: [
+    'node_modules/preline/dist/*.js',
     "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
     "./storage/framework/views/*.php",
     "./resources/views/**/*.blade.php",
@@ -80,5 +81,8 @@ export default {
     },
   },
 
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('preline/plugin'),
+  ],
 }
