@@ -70,6 +70,9 @@ export default function Navbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem>
+                  <Link href='/profile'>Profile</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
                   <Link href='/dashboard'>Dashboard</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
