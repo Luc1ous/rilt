@@ -26,7 +26,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className='w-full sticky top-0 py-6 container bg-white shadow-md'>
+    <div className='w-full z-50 sticky top-0 py-6 container bg-white shadow-md'>
       <div className='flex flex-col lg:flex-row lg:justify-between lg:items-center'>
         <div className='flex justify-between items-center'>
           <h4 className='text-2xl font-medium'>Laravel blog</h4>
