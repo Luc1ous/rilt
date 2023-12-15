@@ -10,7 +10,7 @@ export default function Profile() {
   const { auth } = usePage().props
   return (
     <Default>
-      <div className='max-w-4xl mx-auto'>
+      <div className='max-w-4xl mx-auto my-12'>
         <Card className='p-8'>
           <div className='w-full flex justify-end'>
             <Link href={`/profile/edit/${auth.user.username}`}>
@@ -20,17 +20,19 @@ export default function Profile() {
               </Button>
             </Link>
           </div>
-          <div className='flex flex-wrap md:flex-nowrap items-center gap-4'>
 
-            <div className='md:basis-1/3 lg:basis-1/5'>
-              <img className='bg-gray-300 rounded-full w-20 h-20 aspect-auto' src="https://plus.unsplash.com/premium_photo-1702400311588-2f56c9c467a2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5NHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+          <div className='mt-6 flex relative flex-col items-center'>
+            <div className="w-full">
+              <img className='w-full h-32 md:h-44 aspect-video rounded-lg' src="https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw0MXx8fGVufDB8fHx8fA%3D%3D" alt="" />
             </div>
-
-            <div className=''>
-              <h3 className='text-xl font-medium'>{auth.user.fullname}</h3>
-              <p className='line-clamp-2 text-sm text-gray-600 leading-relaxed'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore laborum numquam quo tenetur nobis repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, iusto.</p>
+            <div className='flex justify-center items-center'>
+              <img className="w-20 h-20 bg-gray-700 rounded-full absolute -bottom-8 ring-white ring-4" src="https://plus.unsplash.com/premium_photo-1702400311588-2f56c9c467a2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5NHx8fGVufDB8fHx8fA%3D%3D" alt="" />
             </div>
+          </div>
 
+          <div className='text-center my-12'>
+            <h3 className='text-xl font-medium'>{auth.user.fullname}</h3>
+            <p className='line-clamp-2 text-sm text-gray-600 leading-relaxed'>Junior Web Developer</p>
           </div>
 
           <div className='mt-10'>
