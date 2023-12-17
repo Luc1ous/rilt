@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Dashboard\ArticleController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Models\Article;
@@ -44,6 +45,7 @@ Route::middleware('auth')->group(function() {
 // Route Dashboard [Superadmin, Admin, Writer]
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');
+    Route::resource('articles', ArticleController::class);
 });
 
 // Route::get('/user/{user}', function(User $user) {
