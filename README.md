@@ -7,7 +7,7 @@ RILT is a website where you can readt articles about Laravel and it's ecosystem
  - Laravel 10
  - Tailwind css
 
-## Featurea : 
+## Features : 
  - Sign In
  - Sign Up
  - Show Articles
