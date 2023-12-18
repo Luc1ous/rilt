@@ -1,4 +1,3 @@
-import { Card } from '@/Components/ui/card'
 import React from 'react'
 
 export default function Auth({ children }) {
