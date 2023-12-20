@@ -1,5 +1,7 @@
+import { Button } from '@/Components/ui/button'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/Components/ui/dropdown-menu'
 import { Head, Link, usePage } from '@inertiajs/inertia-react'
-import { ClipboardIcon, DashboardIcon, HomeIcon, LockOpen1Icon, MixIcon, PersonIcon, RocketIcon } from '@radix-ui/react-icons'
+import { ClipboardIcon, DashboardIcon, ExitIcon, HomeIcon, LockOpen1Icon, MixIcon, PersonIcon, RocketIcon } from '@radix-ui/react-icons'
 import React from 'react'
 
 export default function Admin({ children, title }) {
@@ -20,27 +22,27 @@ export default function Admin({ children, title }) {
             </div>
 
             <div className="w-full flex items-center justify-end ms-auto sm:gap-x-3 sm:order-3">
-
-              <div className="flex flex-row items-center justify-end gap-2">
-                <div className="hs-dropdown relative inline-flex [--placement:bottom-right]">
-                  <button id="hs-dropdown-with-header" type="button" className="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                    <img className="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800" src="https://plus.unsplash.com/premium_photo-1687710306899-10a3bfcacf9b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzNHx8fGVufDB8fHx8fA%3D%3D" alt="Image Description" />
-                  </button>
-
-                  <div className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700" aria-labelledby="hs-dropdown-with-header">
-                    <div className="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Signed in as</p>
-                      <p className="text-sm font-medium text-gray-800 dark:text-gray-300">{auth.user.email}</p>
-                    </div>
-                    <div className="mt-2 py-2 first:pt-0 last:pb-0">
-                      <a className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
-                        <HomeIcon />
-                        Homepage
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant='secondary'>{auth.user.username}</Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuLabel>Signed in as {auth.user.email}</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className='flex justify-start gap-4'>
+                    <Link href='/' className='flex justify-start items-center gap-4'>
+                      <HomeIcon />
+                      Homepage
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link className='text-red-600 flex justify-start items-center gap-4'>
+                      <ExitIcon />
+                      Logout
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </nav>
         </header>
