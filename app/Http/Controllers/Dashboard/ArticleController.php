@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
@@ -22,7 +24,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return inertia('Dashboard/Articles/Create', compact('categories'));
     }
 
     /**
@@ -30,7 +33,16 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|min:10',
+            'category_id' => 'required',
+            'body' => 'required'
+        ]);
+
+        $data['slug'] = Str::slug($request->title);
+        $data['user_id'] = auth()->user()->id;
+        Article::create($data);
+        return redirect()->route('dashboard.articles.index')->with('success', 'Article created successfully');
     }
 
     /**
