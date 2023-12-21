@@ -79,8 +79,8 @@ export default function Navbar() {
             </DropdownMenu>
           ) : (
             <>
-              <Link href='/signin' className='text-gray-600 hover:text-fuchsia-600'>Sign In</Link>
-              <Link href='/signup' className='text-gray-600 hover:text-fuchsia-600'>Sign Up</Link>
+              <a href='/signin' className='text-gray-600 hover:text-fuchsia-600'>Sign In</a>
+              <a href='/signup' className='text-gray-600 hover:text-fuchsia-600'>Sign Up</a>
             </>
           )}
         </ul>
