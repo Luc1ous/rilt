@@ -5,11 +5,19 @@ import { Button } from '@/Components/ui/button'
 import { Card, CardContent, CardFooter } from '@/Components/ui/card'
 import Pagination from '@/Components/Pagination'
 import { Link, usePage } from '@inertiajs/inertia-react'
-import { CheckCircledIcon, Cross1Icon, Pencil2Icon, PlusIcon, TrashIcon } from '@radix-ui/react-icons'
+import { CheckCircledIcon, Pencil2Icon, PlusIcon, TrashIcon } from '@radix-ui/react-icons'
 import { Alert, AlertDescription, AlertTitle } from '@/Components/ui/alert'
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/Components/ui/dialog'
+import { DialogTrigger } from '@radix-ui/react-dialog'
+import { Inertia } from '@inertiajs/inertia'
 
 export default function Index({ articles }) {
   const { flash } = usePage().props
+
+  const handleDelete = async (article) => {
+    Inertia.delete(`/dashboard/articles/${article}`)
+  } 
+
   return (
     <Admin>
       <Admin.Title>Articles</Admin.Title>
@@ -34,7 +42,7 @@ export default function Index({ articles }) {
         <Card>
           <CardContent className='p-6'>
             <Table>
-              <TableCaption>Articles list</TableCaption>
+              <TableCaption>Articles total {articles.total}</TableCaption>
               <TableHeader className='bg-gray-50'>
                 <TableRow>
                   <TableHead>ID</TableHead>
@@ -44,20 +52,41 @@ export default function Index({ articles }) {
                 </TableRow>
               </TableHeader>
               <TableBody>
+                {articles.data.length == 0 && <TableCell colspan='4' className='text-center'>Articles empty</TableCell>}
                 {articles.data.map((article, index) => (
                   <TableRow key={index}>
                     <TableCell>{article.id}</TableCell>
                     <TableCell>{article.title}</TableCell>
                     <TableCell>{article.slug}</TableCell>
                     <TableCell className='flex gap-2'>
-                      <Link href={`/dashboard/articles/${article.slug}`}>
-                        <Button>
-                            <Pencil2Icon />
-                        </Button>
-                      </Link>
-                      <Button variant='destructive'>
-                        <TrashIcon />
+                      <Button asChild>
+                        <Link href={`/dashboard/articles/${article.slug}/edit`}>
+                          <Pencil2Icon />
+                        </Link>
                       </Button>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button variant='destructive'>
+                            <TrashIcon />
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>Are you sure ?</DialogTitle>
+                            <DialogDescription>
+                              Wan't to delete article with title <b>{article.title}</b>
+                              </DialogDescription>
+                          </DialogHeader>
+                          <DialogFooter className='sm:justify-start'>
+                            <DialogClose asChild>
+                              <Button onClick={() => handleDelete(article.slug)} variant='destructive'>Delete</Button>
+                            </DialogClose>
+                            <DialogClose asChild>
+                              <Button variant='secondary'>Cancel</Button>
+                            </DialogClose>
+                          </DialogFooter>
+                        </DialogContent>
+                      </Dialog>
                     </TableCell>
                   </TableRow>
                 ))}

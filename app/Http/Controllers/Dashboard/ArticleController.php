@@ -15,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::where('user_id', auth()->user()->id)->paginate(5);
+        $articles = Article::where('user_id', auth()->user()->id)->latest()->paginate(5);
         return inertia('Dashboard/Articles/Index', compact('articles'));
     }
 
@@ -39,7 +39,6 @@ class ArticleController extends Controller
             'body' => 'required'
         ]);
 
-        $data['slug'] = Str::slug($request->title);
         $data['user_id'] = auth()->user()->id;
         Article::create($data);
         return redirect()->route('dashboard.articles.index')->with('success', 'Article created successfully');
@@ -48,32 +47,43 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Article $article)
     {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Article $article)
     {
-        //
+        $categories = Category::all();
+        return inertia('Dashboard/Articles/Edit', compact('article', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Article $article)
     {
-        //
+        $request->validate([
+            'title' => 'required|min:10',
+            'category_id' => 'required',
+            'body' => 'required'
+        ]);
+
+        $article->slug = null;
+        $article->update($request->all());
+
+        return redirect()->route('dashboard.articles.index')->with('success', 'Article updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        return back()->with('success', 'Article deleted successfully');
     }
 }
