@@ -1,10 +1,13 @@
 import React from 'react'
 import Default from '@/Layout/Default'
-import { Link } from '@inertiajs/inertia-react'
+import { Head, Link } from '@inertiajs/inertia-react'
 
 export default function Article({ article }) {
   return (
     <Default>
+      <Head>
+        <title>{article.title}</title>
+      </Head>
       <div className='max-w-3xl mx-auto md:p-6'>
         <h2 className='capitalize text-2xl md:text-4xl font-bold'>{article.title}</h2>
         <p className='my-8 text-sm md:text-base font-normal text-gray-600'>
