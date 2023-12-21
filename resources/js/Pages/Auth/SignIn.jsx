@@ -4,8 +4,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Com
 import { Input } from '@/Components/ui/input'
 import { Label } from '@/Components/ui/label'
 import { Inertia } from '@inertiajs/inertia'
-import { Link, usePage } from '@inertiajs/inertia-react'
+import { Head, Link, usePage } from '@inertiajs/inertia-react'
 import { Button } from '@/Components/ui/button'
+import { GitHubLogoIcon } from '@radix-ui/react-icons'
 
 export default function Signin() {
   const { errors } = usePage().props
@@ -28,6 +29,9 @@ export default function Signin() {
 
   return (
     <Auth>
+      <Head>
+        <title>Sign In</title>
+      </Head>
       <Card>
         <CardHeader>
           <CardTitle>Sign In</CardTitle>
@@ -49,8 +53,16 @@ export default function Signin() {
                 <p className='text-red-500 text-sm mt-1'>{errors.password}</p>
               )}
             </div>
-            <Button type="submit">Sign In</Button>
+            <Button type="submit" className='w-full bg-sky-500 hover:bg-sky-600'>Sign In</Button>
           </form>
+          <div class="py-3 flex items-center text-xs text-gray-600 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-400 before:me-6 after:flex-[1_1_0%] after:border-t after:border-gray-400 after:ms-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">Or Sign In With</div>
+          <Button className='flex gap-2 w-full my-2'>
+            {/* <GitHubLogoIcon /> */}
+            Github
+          </Button>
+          <Button variant='secondary' className='flex gap-2 w-full my-2'>
+            Google
+          </Button>
         </CardContent>
       </Card>
     </Auth>
