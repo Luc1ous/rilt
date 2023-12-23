@@ -8,8 +8,7 @@ RILT is a website where you can readt articles about Laravel and it's ecosystem
  - Tailwind css
 
 ## Features (Done) : 
- - Sign In
- - Sign Up
+ - Sign In & Sign Up (already using Github)
  - Show Articles
  - Show Articles with Category
  - Dashboard for Developer, Admin, and Writer
