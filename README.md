@@ -15,6 +15,7 @@ RILT is a website where you can readt articles about Laravel and it's ecosystem
  - Create Articles
 
  ## Features (Soon) :
+ - Manage Roles and Permissions using Spatie roles and permissions package
  - Sign In and Sign Up using Social (on progress)
  - Add Thumbnail to article
  - CRUD Categories with image
