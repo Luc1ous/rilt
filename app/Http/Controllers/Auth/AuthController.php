@@ -57,7 +57,7 @@ class AuthController extends Controller
     }
 
     public function register(SignUpRequest $request) {
-
+        
         $user = User::create($request->validated());
 
         $prev_url = session()->pull('prev_url', 'default');
