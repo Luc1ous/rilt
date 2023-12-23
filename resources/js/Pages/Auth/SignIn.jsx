@@ -55,14 +55,13 @@ export default function Signin() {
             </div>
             <Button type="submit" className='w-full bg-sky-500 hover:bg-sky-600'>Sign In</Button>
           </form>
-          <div class="py-3 flex items-center text-xs text-gray-600 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-400 before:me-6 after:flex-[1_1_0%] after:border-t after:border-gray-400 after:ms-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">Or Sign In With</div>
-          <Button className='flex gap-2 w-full my-2'>
-            {/* <GitHubLogoIcon /> */}
-            Github
-          </Button>
-          <Button variant='secondary' className='flex gap-2 w-full my-2'>
-            Google
-          </Button>
+          <div className="py-3 flex items-center text-xs text-gray-600 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-400 before:me-6 after:flex-[1_1_0%] after:border-t after:border-gray-400 after:ms-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">Or Sign In With</div>
+          <a href='/auth/github'>
+            <Button className='flex gap-2 w-full my-2'>
+              <GitHubLogoIcon />
+              Github
+            </Button>
+          </a>
         </CardContent>
       </Card>
     </Auth>

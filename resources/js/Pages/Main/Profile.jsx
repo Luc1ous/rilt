@@ -23,10 +23,10 @@ export default function Profile() {
 
           <div className='mt-6 flex relative flex-col items-center'>
             <div className="w-full">
-              <img className='w-full h-32 md:h-44 aspect-video rounded-lg' src="https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw0MXx8fGVufDB8fHx8fA%3D%3D" alt="" />
+              <img className='w-full h-32 md:h-64 aspect-video rounded-lg' src="https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw0MXx8fGVufDB8fHx8fA%3D%3D" alt="" />
             </div>
             <div className='flex justify-center items-center'>
-              <img className="w-20 h-20 bg-gray-700 rounded-full absolute -bottom-8 ring-white ring-4" src="https://plus.unsplash.com/premium_photo-1702400311588-2f56c9c467a2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5NHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+              <img className="w-20 h-20 bg-gray-700 rounded-full absolute -bottom-8 ring-white ring-4" src={auth.user.avatar} alt="" />
             </div>
           </div>
 

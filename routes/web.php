@@ -28,6 +28,11 @@ Route::get('/categories/{category}', [HomeController::class, 'categoryDetail']);
 
 // Route auth
 Route::middleware('guest')->group(function() {
+    
+    // Sign In / Sign Up with Socialite Route
+    Route::get('/auth/{provider}', [AuthController::class, 'redirectToProvider']);
+    Route::get('/auth/{provider}/callback', [AuthController::class, 'handleProviderCallback']);
+
     Route::get('/signin', [AuthController::class, 'signin'])->name('login');
     Route::post('/signin', [AuthController::class, 'authenticate']);
     Route::get('/signup', [AuthController::class, 'signup'])->name('signup');

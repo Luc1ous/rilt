@@ -66,7 +66,7 @@ export default function Navbar() {
           {auth.user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline">{auth.user.username}</Button> 
+                <Button variant="outline">{auth.user.name}</Button> 
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem>

@@ -5,23 +5,42 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SignInRequest;
+use App\Http\Requests\SignUpRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
+
+    public function redirectToProvider($provider) {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    public function handleProviderCallback($provider) {
+        $user = Socialite::driver($provider)->user();
+        $checkUser = User::updateOrCreate(
+            [
+                'email' => $user->getEmail()
+            ],
+            [
+                'name' => $user->getName(),
+                'nickname' => $user->getNickname(),
+                'avatar' => $user->getAvatar(),
+                'provider_id' => $user->getId()
+            ]
+        );
+        Auth::login($checkUser, true);
+        return redirect()->route('home');
+    }
 
     public function signin() {
         session()->put('prev_url', url()->previous());
         return inertia('Auth/SignIn');
     }
 
-    public function authenticate(Request $request){
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:8'
-        ]);
-
+    public function authenticate(SignInRequest $request){
         $prev_url = session()->pull('prev_url', 'default');
 
         if(Auth::attempt($request->all())) {
@@ -37,20 +56,9 @@ class AuthController extends Controller
         return inertia('Auth/SignUp');
     }
 
-    public function register(Request $request) {
-        $request->validate([
-            'email' => 'required|email|unique:users,email',
-            'fullname' => 'required|string|min:2',
-            'username' => 'required|min:5|unique:users,username',
-            'password' => 'required|min:8'
-        ]);
+    public function register(SignUpRequest $request) {
 
-        $user = User::create([
-            'email' => $request->email,
-            'username' => $request->username,
-            'fullname' => $request->fullname,
-            'password' => $request->password
-        ]);
+        $user = User::create($request->validated());
 
         $prev_url = session()->pull('prev_url', 'default');
 

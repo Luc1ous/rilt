@@ -36,7 +36,7 @@ class Article extends Model
     }
 
     public function author() {
-        return $this->belongsTo(User::class, 'user_id', 'id')->select('id', 'username', 'email');
+        return $this->belongsTo(User::class, 'user_id', 'id')->select('id', 'name', 'email');
     }
 
     public function category() {

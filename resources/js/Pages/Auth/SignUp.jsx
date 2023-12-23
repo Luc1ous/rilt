@@ -72,11 +72,8 @@ export default function Signin() {
           </form>
           <div class="py-3 flex items-center text-xs text-gray-600 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-400 before:me-6 after:flex-[1_1_0%] after:border-t after:border-gray-400 after:ms-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">Or Sign Up With</div>
           <Button className='flex gap-2 w-full my-2'>
-            {/* <GitHubLogoIcon /> */}
+            <GitHubLogoIcon />
             Github
-          </Button>
-          <Button variant='secondary' className='flex gap-2 w-full my-2'>
-            Google
           </Button>
         </CardContent>
       </Card>

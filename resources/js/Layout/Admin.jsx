@@ -24,7 +24,7 @@ export default function Admin({ children, title }) {
             <div className="w-full flex items-center justify-end ms-auto sm:gap-x-3 sm:order-3">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant='secondary'>{auth.user.username}</Button>
+                  <img className='w-12 h-12 rounded-full cursor-pointer' src={auth.user.avatar} alt="" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuLabel>Signed in as {auth.user.email}</DropdownMenuLabel>
