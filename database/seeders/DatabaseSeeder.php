@@ -6,7 +6,10 @@ namespace Database\Seeders;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,12 +20,21 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'ardianilyas',
-        //     'nickname' => 'lucious',
-        //     'email' => 'ardian@rilt.com',
-        //     'password' => bcrypt('developer'),
-        // ]);
+        $user = User::create([
+            'name' => 'Ardian Ilyas',
+            'nickname' => 'ardianilyas',
+            'email' => 'ardian@rilt.com',
+            'password' => bcrypt('developer')
+        ]);
+
+        $permission = Permission::create(['name' => 'do anything']);
+        
+        $superadmin = Role::create(['name' => 'Super Admin'])->givePermissionTo($permission);
+        $admin = Role::create(['name' => 'Admin']);
+        $writer = Role::create(['name' => 'Writer']);
+
+        $user->assignRole($superadmin);
+
         Category::factory(5)->create();
         // Article::factory(20)->create();
     }
