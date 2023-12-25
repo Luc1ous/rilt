@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\ArticleController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\RoleController;
+use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\HomeController;
 use App\Models\Article;
 use App\Models\Category;
@@ -50,9 +51,15 @@ Route::middleware('auth')->group(function() {
 
 // Route Dashboard [Superadmin, Admin, Writer]
 Route::middleware(['auth', 'role_or_permission:Admin'])->prefix('dashboard')->name('dashboard.')->group(function(){
+    // Route Dashboard [Superadmin, Admin, Writer]
     Route::get('/', [DashboardController::class, 'index'])->name('index');
+    // Route Articles
     Route::resource('articles', ArticleController::class);
+    // Route Roles
     Route::resource('roles', RoleController::class);
+    // Route users
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/{user}/assign/{role}', [UserController::class, 'assign'])->name('users.assign');
 });
 
 // Route::get('/user/{user}', function(User $user) {
