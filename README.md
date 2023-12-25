@@ -7,6 +7,10 @@ RILT is a website where you can readt articles about Laravel and it's ecosystem
  - Laravel 10
  - Tailwind css
 
+## Package List
+ - [Eloquent sluggable](https://github.com/cviebrock/eloquent-sluggable)
+ - [Spatie roles and permissions](https://spatie.be/docs/laravel-permission/v6/introduction)
+
 ## Features (Done) : 
  - Sign In & Sign Up (already using Github)
  - Show Articles
