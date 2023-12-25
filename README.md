@@ -9,6 +9,7 @@ RILT is a website where you can readt articles about Laravel and it's ecosystem
 
 ## Package List
  - [Shadcn-ui](https://ui.shadcn.com)
+ - [Laravel Socialite](https://github.com/laravel/socialite)
  - [Eloquent sluggable](https://github.com/cviebrock/eloquent-sluggable)
  - [Spatie roles and permissions](https://spatie.be/docs/laravel-permission/v6/introduction)
 
