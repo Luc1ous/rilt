@@ -20,6 +20,7 @@ RILT is a website where you can readt articles about Laravel and it's ecosystem
  - Dashboard for Developer, Super Admin, Admin, and Writer
  - Create, Update, Delete Articles
  - Create, Update, Delete Roles
+ - Manage users role
 
  ## Features (Soon) :
  - Manage Roles and Permissions using Spatie roles and permissions package
