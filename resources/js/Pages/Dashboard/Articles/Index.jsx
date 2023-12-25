@@ -52,7 +52,12 @@ export default function Index({ articles }) {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {articles.data.length == 0 && <TableCell colspan='4' className='text-center'>Articles empty</TableCell>}
+                {articles.data.length == 0 && 
+                  <TableCell colspan='4' className='text-center'>
+                    <img className='max-w-sm mx-auto' src={'/assets/empty.png'} alt="" />
+                    Articles empty
+                  </TableCell>
+                }
                 {articles.data.map((article, index) => (
                   <TableRow key={index}>
                     <TableCell>{article.id}</TableCell>
