@@ -24,7 +24,7 @@ export default function Index({ users, roles }) {
       )}
 
       <Card className='my-4'>
-        <CardContent>
+        <CardContent className='p-6'>
           <Table>
             <TableCaption>Users total {users.data.length}</TableCaption>
             <TableHeader>
