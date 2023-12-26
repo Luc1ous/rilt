@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\ArticleController;
+use App\Http\Controllers\Dashboard\CategoriesController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\UserController;
@@ -55,6 +56,8 @@ Route::middleware(['auth', 'role_or_permission:Admin'])->prefix('dashboard')->na
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     // Route Articles
     Route::resource('articles', ArticleController::class);
+    // Route Categories
+    Route::resource('categories', CategoriesController::class);
     // Route Roles
     Route::resource('roles', RoleController::class);
     // Route users

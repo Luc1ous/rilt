@@ -26,16 +26,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'ardian@rilt.com',
             'password' => bcrypt('developer')
         ]);
-
-        $permission = Permission::create(['name' => 'do anything']);
         
-        $superadmin = Role::create(['name' => 'Super Admin'])->givePermissionTo($permission);
-        $admin = Role::create(['name' => 'Admin']);
-        $writer = Role::create(['name' => 'Writer']);
+        $superadmin = Role::create(['name' => 'Super Admin']);
 
         $user->assignRole($superadmin);
-
-        Category::factory(5)->create();
-        // Article::factory(20)->create();
     }
 }
