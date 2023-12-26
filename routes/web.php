@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function() {
 });
 
 // Route Dashboard [Superadmin, Admin, Writer]
-Route::middleware(['auth', 'role_or_permission:Admin'])->prefix('dashboard')->name('dashboard.')->group(function(){
+Route::middleware(['auth', 'role_or_permission:Admin|Writer'])->prefix('dashboard')->name('dashboard.')->group(function(){
     // Route Dashboard [Superadmin, Admin, Writer]
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     // Route Articles

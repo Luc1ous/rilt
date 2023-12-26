@@ -26,7 +26,7 @@ export default function Index({ users, roles }) {
       <Card className='my-4'>
         <CardContent className='p-6'>
           <Table>
-            <TableCaption>Users total {users.data.length}</TableCaption>
+            <TableCaption>Users total {users.length}</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead>ID</TableHead>
@@ -36,7 +36,7 @@ export default function Index({ users, roles }) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {users.data.map(user => (
+              {users.map(user => (
                 <TableRow key={user.id}>
                   <TableCell>{user.id}</TableCell>
                   <TableCell>{user.name}</TableCell>
