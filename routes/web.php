@@ -50,19 +50,21 @@ Route::middleware('auth')->group(function() {
     });
 });
 
-// Route Dashboard [Superadmin, Admin, Writer]
+// Route Dashboard
 Route::middleware(['auth', 'role_or_permission:Admin|Writer'])->prefix('dashboard')->name('dashboard.')->group(function(){
-    // Route Dashboard [Superadmin, Admin, Writer]
+    // Route Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     // Route Articles
     Route::resource('articles', ArticleController::class);
-    // Route Categories
-    Route::resource('categories', CategoriesController::class);
-    // Route Roles
-    Route::resource('roles', RoleController::class);
-    // Route users
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::get('/users/{user}/assign/{role}', [UserController::class, 'assign'])->name('users.assign');
+    Route::middleware('role_or_permission:Super Admin')->group(function () {
+        // Route Categories
+        Route::resource('categories', CategoriesController::class);
+        // Route Roles
+        Route::resource('roles', RoleController::class);
+        // Route users
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::get('/users/{user}/assign/{role}', [UserController::class, 'assign'])->name('users.assign');
+    });
 });
 
 // Route::get('/user/{user}', function(User $user) {

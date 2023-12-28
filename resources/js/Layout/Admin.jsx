@@ -77,30 +77,34 @@ export default function Admin({ children, title }) {
                   Articles
                 </Link>
               </li>
-              <li>
-                <Link className={`${url.startsWith('/dashboard/categories') ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard/categories">
-                  <MixIcon />
-                  Categories
-                </Link>
-              </li>
-              <li>
-                <Link className={`${url.startsWith('/dashboard/users') ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard/users">
-                  <PersonIcon />
-                  Users
-                </Link>
-              </li>
-              <li>
-                <Link className={`${url.startsWith('/dashboard/roles') ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard/roles">
-                  <RocketIcon />
-                  Roles
-                </Link>
-              </li>
-              <li>
-                <Link className={`${url.startsWith('/dashboard/permissions') ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard/permissions">
-                  <LockOpen1Icon />
-                  Permissions
-                </Link>
-              </li>
+              {auth.user.role.includes('Super Admin') && (
+                <>
+                  <li>
+                    <Link className={`${url.startsWith('/dashboard/categories') ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard/categories">
+                      <MixIcon />
+                      Categories
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className={`${url.startsWith('/dashboard/users') ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard/users">
+                      <PersonIcon />
+                      Users
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className={`${url.startsWith('/dashboard/roles') ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard/roles">
+                      <RocketIcon />
+                      Roles
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className={`${url.startsWith('/dashboard/permissions') ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard/permissions">
+                      <LockOpen1Icon />
+                      Permissions
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
         </div>
