@@ -50,7 +50,9 @@ export default function Index({ categories }) {
             </TableHeader>
             <TableBody>
               {categories.length < 1 &&
-                <Empty></Empty>
+                <TableRow>
+                  <Empty></Empty>
+                </TableRow>
               }
               {categories.map(category => (
                 <TableRow key={category.id}>
