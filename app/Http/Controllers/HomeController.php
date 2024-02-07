@@ -13,7 +13,7 @@ class HomeController extends Controller
     }
 
     public function articles() {
-        $articles = Article::with('category')->latest()->paginate(9);
+        $articles = Article::with('category')->published()->latest()->paginate(9);
         return inertia('Main/Articles', compact('articles'));
     }
 

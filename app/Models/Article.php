@@ -35,6 +35,10 @@ class Article extends Model
         $query->where('status', 'published');
     }
 
+    public function scopeNotPublished(Builder $query) {
+        $query->where('status', 'not published');
+    }
+
     public function author() {
         return $this->belongsTo(User::class, 'user_id', 'id')->select('id', 'name', 'email');
     }

@@ -49,6 +49,7 @@ export default function Index({ articles }) {
                   <TableHead>ID</TableHead>
                   <TableHead>Title</TableHead>
                   <TableHead>Slug</TableHead>
+                  <TableHead>Status</TableHead>
                   <TableHead>Action</TableHead>
                 </TableRow>
               </TableHeader>
@@ -63,6 +64,13 @@ export default function Index({ articles }) {
                     <TableCell>{article.id}</TableCell>
                     <TableCell>{article.title}</TableCell>
                     <TableCell>{article.slug}</TableCell>
+                    <TableCell>
+                      {article.status == 'published' ? (
+                        <p className='px-2 py-1 bg-green-300'>{article.status}</p>
+                      ) : (
+                        <p className='inline-flex text-sm px-4 py-1 rounded-full text-red-800 bg-red-300'>{article.status}</p>
+                      )}
+                    </TableCell>
                     <TableCell className='flex gap-2'>
                       <Button asChild>
                         <Link href={`/dashboard/articles/${article.slug}/edit`}>
