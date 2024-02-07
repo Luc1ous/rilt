@@ -10,13 +10,14 @@ import { Alert, AlertDescription, AlertTitle } from '@/Components/ui/alert'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/Components/ui/dialog'
 import { DialogTrigger } from '@radix-ui/react-dialog'
 import { Inertia } from '@inertiajs/inertia'
+import Empty from '@/Components/Empty'
 
 export default function Index({ articles }) {
   const { flash } = usePage().props
 
   const handleDelete = async (article) => {
     Inertia.delete(`/dashboard/articles/${article}`)
-  } 
+  }
 
   return (
     <Admin>
@@ -30,14 +31,14 @@ export default function Index({ articles }) {
         </Button>
       </Link>
 
-      {flash.success && 
+      {flash.success &&
         <Alert className='text-green-600 mb-6'>
           <CheckCircledIcon />
           <AlertTitle>Success</AlertTitle>
           <AlertDescription>{flash.success}</AlertDescription>
         </Alert>
       }
-      
+
       <div className='mb-10'>
         <Card>
           <CardContent className='p-6'>
@@ -52,11 +53,10 @@ export default function Index({ articles }) {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {articles.data.length == 0 && 
-                  <TableCell colspan='4' className='text-center'>
-                    <img className='max-w-sm mx-auto' src={'/assets/empty.png'} alt="" />
-                    Articles empty
-                  </TableCell>
+                {articles.data.length == 0 &&
+                  <TableRow>
+                    <Empty></Empty>
+                  </TableRow>
                 }
                 {articles.data.map((article, index) => (
                   <TableRow key={index}>
@@ -80,7 +80,7 @@ export default function Index({ articles }) {
                             <DialogTitle>Are you sure ?</DialogTitle>
                             <DialogDescription>
                               Wan't to delete article with title <b>{article.title}</b>
-                              </DialogDescription>
+                            </DialogDescription>
                           </DialogHeader>
                           <DialogFooter className='sm:justify-start'>
                             <DialogClose asChild>
