@@ -67,6 +67,7 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
+        $category->articles()->update([ 'category_id' => null ]);
         $category->delete();
         return back()->with('success', 'Category deleted successfully');
     }
