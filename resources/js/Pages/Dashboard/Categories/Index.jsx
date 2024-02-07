@@ -7,9 +7,15 @@ import { Card, CardContent } from '@/Components/ui/card'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/Components/ui/table'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/Components/ui/dialog'
 import { Alert, AlertDescription, AlertTitle } from '@/Components/ui/alert'
+import Empty from '@/Components/Empty'
+import { Inertia } from '@inertiajs/inertia'
 
 export default function Index({ categories }) {
   const { flash } = usePage().props
+
+  const handleDelete = async (category) => {
+    Inertia.delete(`/dashboard/categories/${category}`)
+  }
   return (
     <Admin>
       <Admin.Title>Categories</Admin.Title>
@@ -43,6 +49,9 @@ export default function Index({ categories }) {
               </TableRow>
             </TableHeader>
             <TableBody>
+              {categories.length < 1 &&
+                <Empty></Empty>
+              }
               {categories.map(category => (
                 <TableRow key={category.id}>
                   <TableCell>{category.id}</TableCell>
@@ -67,7 +76,7 @@ export default function Index({ categories }) {
                         </DialogHeader>
                         <DialogFooter className='sm:justify-start'>
                           <DialogClose asChild>
-                            <Button variant='destructive'>Delete</Button>
+                            <Button onClick={() => handleDelete(category.slug)} variant='destructive'>Delete</Button>
                           </DialogClose>
                           <DialogClose asChild>
                             <Button variant='secondary'>Cancel</Button>
