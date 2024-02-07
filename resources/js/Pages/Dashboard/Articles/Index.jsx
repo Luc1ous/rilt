@@ -66,7 +66,7 @@ export default function Index({ articles }) {
                     <TableCell>{article.slug}</TableCell>
                     <TableCell>
                       {article.status == 'published' ? (
-                        <p className='px-2 py-1 bg-green-300'>{article.status}</p>
+                        <p className='inline-flex text-sm px-4 py-1 rounded-full text-green-800 bg-green-300'>{article.status}</p>
                       ) : (
                         <p className='inline-flex text-sm px-4 py-1 rounded-full text-red-800 bg-red-300'>{article.status}</p>
                       )}

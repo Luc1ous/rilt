@@ -1,7 +1,7 @@
 import { Button } from '@/Components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/Components/ui/dropdown-menu'
 import { Head, Link, usePage } from '@inertiajs/inertia-react'
-import { ClipboardIcon, DashboardIcon, ExitIcon, HomeIcon, LockOpen1Icon, MixIcon, PersonIcon, RocketIcon } from '@radix-ui/react-icons'
+import { ArchiveIcon, ClipboardIcon, DashboardIcon, ExitIcon, HomeIcon, LockOpen1Icon, MixIcon, PersonIcon, RocketIcon } from '@radix-ui/react-icons'
 import React from 'react'
 
 export default function Admin({ children, title }) {
@@ -24,7 +24,7 @@ export default function Admin({ children, title }) {
             <div className="w-full flex items-center justify-end ms-auto sm:gap-x-3 sm:order-3">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  {auth.user.avatar ? 
+                  {auth.user.avatar ?
                     (<img className='w-12 h-12 rounded-full cursor-pointer' src={auth.user.avatar} />) : (<div className='w-12 h-12 bg-gray-200 rounded-full cursor-pointer'></div>)
                   }
                 </DropdownMenuTrigger>
@@ -53,7 +53,7 @@ export default function Admin({ children, title }) {
           <div className="flex items-center py-4">
             <button type="button" className="text-gray-500 hover:text-gray-600" data-hs-overlay="#application-sidebar" aria-controls="application-sidebar" aria-label="Toggle navigation">
               <span className="sr-only">Toggle Navigation</span>
-              <svg className="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+              <svg className="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" x2="21" y1="6" y2="6" /><line x1="3" x2="21" y1="12" y2="12" /><line x1="3" x2="21" y1="18" y2="18" /></svg>
             </button>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function Admin({ children, title }) {
           </div>
 
           <nav className="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
-            <ul className="space-y-1.5">
+            <ul className="space-y-2">
               <li>
                 <Link className={`${url === '/dashboard' ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-900 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard">
                   <DashboardIcon />
@@ -79,6 +79,13 @@ export default function Admin({ children, title }) {
               </li>
               {auth.user.role.includes('Super Admin') && (
                 <>
+                  <p className='my-8 text-xs text-gray-600 px-2.5'>Super Admin</p>
+                  <li>
+                    <Link className={`${url.startsWith('/dashboard/draft') ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard/draft">
+                      <ArchiveIcon />
+                      Draft Articles
+                    </Link>
+                  </li>
                   <li>
                     <Link className={`${url.startsWith('/dashboard/categories') ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard/categories">
                       <MixIcon />

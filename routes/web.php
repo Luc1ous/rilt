@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\ArticleController;
 use App\Http\Controllers\Dashboard\CategoriesController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\DraftController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\HomeController;
@@ -57,6 +58,11 @@ Route::middleware(['auth', 'role_or_permission:Admin|Writer'])->prefix('dashboar
     // Route Articles
     Route::resource('articles', ArticleController::class);
     Route::middleware('role_or_permission:Super Admin')->group(function () {
+        // Route Draft
+        Route::prefix('draft')->name('draft.')->group(function () {
+            Route::get('/', [DraftController::class, 'index'])->name('index');
+            Route::patch('/publish/{article}', [DraftController::class, 'publish'])->name('publish');
+        });
         // Route Categories
         Route::resource('categories', CategoriesController::class);
         // Route Roles
