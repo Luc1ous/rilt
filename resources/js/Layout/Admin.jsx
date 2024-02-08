@@ -1,7 +1,7 @@
 import { Button } from '@/Components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/Components/ui/dropdown-menu'
 import { Head, Link, usePage } from '@inertiajs/inertia-react'
-import { ArchiveIcon, ClipboardIcon, DashboardIcon, ExitIcon, HomeIcon, LockOpen1Icon, MixIcon, PersonIcon, RocketIcon } from '@radix-ui/react-icons'
+import { ArchiveIcon, CardStackPlusIcon, ClipboardIcon, DashboardIcon, ExitIcon, HomeIcon, LockOpen1Icon, MixIcon, PersonIcon, RocketIcon } from '@radix-ui/react-icons'
 import React from 'react'
 
 export default function Admin({ children, title }) {
@@ -84,6 +84,12 @@ export default function Admin({ children, title }) {
                     <Link className={`${url.startsWith('/dashboard/draft') ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard/draft">
                       <ArchiveIcon />
                       Draft Articles
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className={`${url.startsWith('/dashboard/published') ? 'bg-gray-100' : ''} flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`} href="/dashboard/published">
+                      <CardStackPlusIcon />
+                      Published Articles
                     </Link>
                   </li>
                   <li>
