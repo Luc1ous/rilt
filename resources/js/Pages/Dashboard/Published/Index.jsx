@@ -37,6 +37,7 @@ export default function Index({ articles }) {
                   <TableHead>ID</TableHead>
                   <TableHead>Title</TableHead>
                   <TableHead>Slug</TableHead>
+                  <TableHead>Email</TableHead>
                   <TableHead>Action</TableHead>
                 </TableRow>
               </TableHeader>
@@ -46,6 +47,7 @@ export default function Index({ articles }) {
                     <TableCell>{article.id}</TableCell>
                     <TableCell>{article.title}</TableCell>
                     <TableCell>{article.slug}</TableCell>
+                    <TableCell>{article.author.email}</TableCell>
                     <TableCell>
                       <Button onClick={() => handleDraft(article.slug)}>Draft</Button>
                     </TableCell>

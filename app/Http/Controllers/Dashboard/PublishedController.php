@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PublishedController extends Controller
 {
     public function index() {
-        $articles = Article::published()->paginate(5);
+        $articles = Article::with('author')->published()->paginate(5);
         return inertia('Dashboard/Published/Index', compact('articles'));
     }
 

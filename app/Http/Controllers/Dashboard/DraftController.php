@@ -10,7 +10,7 @@ class DraftController extends Controller
 {
     public function index()
     {
-        $articles = Article::notPublished()->get();
+        $articles = Article::with('author')->notPublished()->get();
         return inertia('Dashboard/Draft/Index', compact('articles'));
     }
 
