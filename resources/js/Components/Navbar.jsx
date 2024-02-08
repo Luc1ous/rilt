@@ -65,9 +65,13 @@ export default function Navbar() {
         <ul className={`${isOpen ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row mt-2 lg:mt-0 gap-2 lg:gap-6`}>
           {auth.user ? (
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline">{auth.user.name}</Button> 
-              </DropdownMenuTrigger>
+              <div className='inline-flex justify-start'>
+                <DropdownMenuTrigger asChild>
+                  <div className='flex justify-start'>
+                    <Button variant="outline">{auth.user.name}</Button>
+                  </div>
+                </DropdownMenuTrigger>
+              </div>
               <DropdownMenuContent>
                 <DropdownMenuItem>
                   <Link href='/profile'>Profile</Link>
