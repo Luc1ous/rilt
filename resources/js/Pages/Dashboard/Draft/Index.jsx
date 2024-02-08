@@ -1,6 +1,7 @@
+import Pagination from '@/Components/Pagination'
 import { Alert, AlertDescription, AlertTitle } from '@/Components/ui/alert'
 import { Button } from '@/Components/ui/button'
-import { Card, CardContent } from '@/Components/ui/card'
+import { Card, CardContent, CardFooter } from '@/Components/ui/card'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/Components/ui/table'
 import Admin from '@/Layout/Admin'
 import { Inertia } from '@inertiajs/inertia'
@@ -41,7 +42,7 @@ export default function Index({ articles }) {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {articles.map((article, index) => (
+                {articles.data.map((article, index) => (
                   <TableRow key={index}>
                     <TableCell>{article.id}</TableCell>
                     <TableCell>{article.title}</TableCell>
@@ -55,6 +56,9 @@ export default function Index({ articles }) {
               </TableBody>
             </Table>
           </CardContent>
+          <CardFooter>
+            <Pagination data={articles}></Pagination>
+          </CardFooter>
         </Card>
       </div>
     </Admin>
