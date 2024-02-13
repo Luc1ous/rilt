@@ -46,7 +46,7 @@ export default function Index({ articles }) {
               <TableCaption>Articles total {articles.total}</TableCaption>
               <TableHeader className='bg-gray-50'>
                 <TableRow>
-                  <TableHead>ID</TableHead>
+                  <TableHead>No</TableHead>
                   <TableHead>Title</TableHead>
                   <TableHead>Slug</TableHead>
                   <TableHead>Status</TableHead>
@@ -61,7 +61,7 @@ export default function Index({ articles }) {
                 }
                 {articles.data.map((article, index) => (
                   <TableRow key={index}>
-                    <TableCell>{article.id}</TableCell>
+                    <TableCell>{(articles.current_page - 1) * articles.per_page + index + 1}</TableCell>
                     <TableCell>{article.title}</TableCell>
                     <TableCell>{article.slug}</TableCell>
                     <TableCell>

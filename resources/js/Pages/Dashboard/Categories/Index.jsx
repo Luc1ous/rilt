@@ -42,7 +42,7 @@ export default function Index({ categories }) {
             <TableCaption>Categories total {categories.length}</TableCaption>
             <TableHeader>
               <TableRow>
-                <TableHead>ID</TableHead>
+                <TableHead>No</TableHead>
                 <TableHead>Name</TableHead>
                 <TableHead>Slug</TableHead>
                 <TableHead>Action</TableHead>
@@ -54,9 +54,9 @@ export default function Index({ categories }) {
                   <Empty></Empty>
                 </TableRow>
               }
-              {categories.map(category => (
-                <TableRow key={category.id}>
-                  <TableCell>{category.id}</TableCell>
+              {categories.map((category, index) => (
+                <TableRow key={index}>
+                  <TableCell>{index + 1}</TableCell>
                   <TableCell>{category.name}</TableCell>
                   <TableCell>{category.slug}</TableCell>
                   <TableCell className='flex gap-2'>

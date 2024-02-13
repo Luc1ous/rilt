@@ -34,7 +34,7 @@ export default function Index({ articles }) {
               <TableCaption>Published articles</TableCaption>
               <TableHeader className='bg-gray-50'>
                 <TableRow>
-                  <TableHead>ID</TableHead>
+                  <TableHead>No</TableHead>
                   <TableHead>Title</TableHead>
                   <TableHead>Slug</TableHead>
                   <TableHead>Email</TableHead>
@@ -44,7 +44,7 @@ export default function Index({ articles }) {
               <TableBody>
                 {articles.data.map((article, index) => (
                   <TableRow key={index}>
-                    <TableCell>{article.id}</TableCell>
+                    <TableCell>{(articles.current_page - 1) * articles.per_page + index + 1}</TableCell>
                     <TableCell>{article.title}</TableCell>
                     <TableCell>{article.slug}</TableCell>
                     <TableCell>{article.author.email}</TableCell>
