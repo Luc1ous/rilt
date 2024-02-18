@@ -51,7 +51,7 @@ export default function Index({ categories }) {
             <TableBody>
               {categories.length < 1 &&
                 <TableRow>
-                  <Empty></Empty>
+                  <Empty colSpan={4}></Empty>
                 </TableRow>
               }
               {categories.map((category, index) => (

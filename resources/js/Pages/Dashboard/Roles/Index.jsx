@@ -8,6 +8,7 @@ import { CheckCircledIcon, Pencil2Icon, PlusIcon, TrashIcon } from '@radix-ui/re
 import { Alert, AlertDescription, AlertTitle } from '@/Components/ui/alert'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/Components/ui/dialog'
 import { Inertia } from '@inertiajs/inertia'
+import Empty from '@/Components/Empty'
 
 export default function Index({ roles }) {
   const { flash } = usePage().props
@@ -15,7 +16,7 @@ export default function Index({ roles }) {
   const handleDelete = async (role) => {
     Inertia.delete(`/dashboard/roles/${role}`)
   }
-  
+
   return (
     <Admin>
       <Admin.Title>Roles</Admin.Title>
@@ -28,7 +29,7 @@ export default function Index({ roles }) {
         </Button>
       </Link>
 
-      {flash.success && 
+      {flash.success &&
         <Alert className='text-green-600 mb-6'>
           <CheckCircledIcon />
           <AlertTitle>Success</AlertTitle>
@@ -49,6 +50,9 @@ export default function Index({ roles }) {
                 </TableRow>
               </TableHeader>
               <TableBody>
+                {roles.length < 1 &&
+                  <Empty colSpan={3}></Empty>
+                }
                 {roles.map(role => (
                   <TableRow key={role.id}>
                     <TableCell>{role.id}</TableCell>

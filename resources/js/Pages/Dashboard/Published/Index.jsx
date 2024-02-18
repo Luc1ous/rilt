@@ -1,3 +1,4 @@
+import Empty from '@/Components/Empty'
 import Pagination from '@/Components/Pagination'
 import { Alert, AlertDescription, AlertTitle } from '@/Components/ui/alert'
 import { Button } from '@/Components/ui/button'
@@ -42,6 +43,9 @@ export default function Index({ articles }) {
                 </TableRow>
               </TableHeader>
               <TableBody>
+                {articles.data.length < 1 &&
+                  <Empty colSpan={5}></Empty>
+                }
                 {articles.data.map((article, index) => (
                   <TableRow key={index}>
                     <TableCell>{(articles.current_page - 1) * articles.per_page + index + 1}</TableCell>
