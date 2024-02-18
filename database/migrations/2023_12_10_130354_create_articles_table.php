@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('body');
             $table->enum('status', ['published', 'not published', 'draft'])->default('not published');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

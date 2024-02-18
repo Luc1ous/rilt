@@ -15,7 +15,10 @@ class DraftController extends Controller
     }
 
     public function publish(Article $article) {
-        $article->update([ 'status' => 'published' ]);
+        $article->update([
+            'status' => 'published',
+            'published_at' => now() 
+        ]);
         return redirect()->to('/dashboard/draft')->with('success', 'Article published successfully');
     }
 }
