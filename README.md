@@ -22,11 +22,11 @@ RILT is a website where you can read articles about Laravel and it's ecosystem
  - Create, Update, Delete Categories
  - Create, Update, Delete Roles
  - Manage users role
+ - Show all users for developer and superadmin roles
 
  ## Features (Soon) :
  - Manage user Roles and Permissions using Spatie roles and permissions package
- - Sign In and Sign Up using Social (on progress)
+ - Sign In and Sign Up using Social (on progress : Github already)
  - Add Thumbnail to article
  - CRUD Categories with image
- - Show all users for developer and superadmin roles
  - CRUD Roles and Permissions (using spatie package)
