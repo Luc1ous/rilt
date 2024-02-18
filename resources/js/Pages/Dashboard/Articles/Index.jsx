@@ -56,7 +56,7 @@ export default function Index({ articles }) {
               <TableBody>
                 {articles.data.length == 0 &&
                   <TableRow>
-                    <Empty></Empty>
+                    <Empty colSpan={5}></Empty>
                   </TableRow>
                 }
                 {articles.data.map((article, index) => (
