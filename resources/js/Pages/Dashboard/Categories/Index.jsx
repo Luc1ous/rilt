@@ -44,6 +44,7 @@ export default function Index({ categories }) {
               <TableRow>
                 <TableHead>No</TableHead>
                 <TableHead>Name</TableHead>
+                <TableHead>Image</TableHead>
                 <TableHead>Slug</TableHead>
                 <TableHead>Action</TableHead>
               </TableRow>
@@ -51,13 +52,16 @@ export default function Index({ categories }) {
             <TableBody>
               {categories.length < 1 &&
                 <TableRow>
-                  <Empty colSpan={4}></Empty>
+                  <Empty colSpan={5}></Empty>
                 </TableRow>
               }
               {categories.map((category, index) => (
                 <TableRow key={index}>
                   <TableCell>{index + 1}</TableCell>
                   <TableCell>{category.name}</TableCell>
+                  <TableCell>
+                    <img className='w-10' src={category.image} alt="" />
+                  </TableCell>
                   <TableCell>{category.slug}</TableCell>
                   <TableCell className='flex gap-2'>
                     <Button asChild>

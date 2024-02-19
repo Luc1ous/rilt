@@ -31,7 +31,15 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        Category::create($request->all());
+        $image = $request->file('image');
+        $imageName = $image->hashName();
+        $image->move('storage/categories', $imageName);
+
+        Category::create([
+            'image' => $imageName,
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
 
         return redirect()->route('dashboard.categories.index')->with('success', 'Category created successfully');
     }
@@ -67,7 +75,7 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->articles()->update([ 'category_id' => null ]);
+        $category->articles()->update(['category_id' => null]);
         $category->delete();
         return back()->with('success', 'Category deleted successfully');
     }

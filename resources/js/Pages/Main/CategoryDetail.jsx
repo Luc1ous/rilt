@@ -9,8 +9,13 @@ export default function CategoryDetail({ articles, category }) {
     <Default>
       <Card className='shadow-md'>
         <CardHeader>
-          <CardTitle>Article with category : {category.name}</CardTitle>
-          <CardDescription>{category.description}</CardDescription>
+          <div className='flex items-center gap-6'>
+            <img src={category.image} className='w-10' alt="" />
+            <div>
+              <CardTitle>Article with category : {category.name}</CardTitle>
+              <CardDescription>{category.description}</CardDescription>
+            </div>
+          </div>
         </CardHeader>
       </Card>
 
@@ -24,7 +29,7 @@ export default function CategoryDetail({ articles, category }) {
       {articles.data.length > 0 && (
         <>
           <div className='my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {articles.data.map((article, index) =>(
+            {articles.data.map((article, index) => (
               <ArticleCard key={index} article={article} />
             ))}
           </div>
