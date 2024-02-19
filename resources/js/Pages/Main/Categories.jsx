@@ -18,7 +18,7 @@ export default function Categories({ categories }) {
                   <img src={category.image} className='w-10' />
                   <div>
                     <CardTitle className='capitalize'>{category.name}</CardTitle>
-                    <CardDescription>{category.description}</CardDescription>
+                    <CardDescription className='line-clamp-1'>{category.description}</CardDescription>
                   </div>
                 </div>
               </CardHeader>
