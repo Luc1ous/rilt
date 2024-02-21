@@ -29,7 +29,7 @@ class User extends Authenticatable
 
     public function getRouteKeyName()
     {
-        return 'id';
+        return 'nickname';
     }
 
     /**

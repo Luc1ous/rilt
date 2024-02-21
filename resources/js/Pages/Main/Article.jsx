@@ -10,8 +10,11 @@ export default function Article({ article }) {
       </Head>
       <div className='max-w-3xl mx-auto md:p-6'>
         <h2 className='capitalize text-2xl md:text-4xl font-bold'>{article.title}</h2>
-        <p className='my-8 text-sm md:text-base font-normal text-gray-600'>
-          {article.created_at} | Author : <Link href={`/user/${article.author.name}`} className='hover:text-blue-500 hover:underline'>@{article.author.name}</Link>
+        <p className='my-8 flex justify-between text-sm md:text-base font-normal text-gray-600'>
+          {article.created_at}
+          <div>
+            Author : <Link href={`/user/${article.author.nickname}`} className='hover:text-blue-500 hover:underline'>@{article.author.nickname}</Link>
+          </div>
         </p>
         <img className='w-full mx-auto aspect-auto rounded-2xl' src={article.thumbnail} alt="" />
 

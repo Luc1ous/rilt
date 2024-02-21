@@ -32,8 +32,8 @@ Route::get('/categories', [HomeController::class, 'categories']);
 Route::get('/categories/{category}', [HomeController::class, 'categoryDetail']);
 
 // Route auth
-Route::middleware('guest')->group(function() {
-    
+Route::middleware('guest')->group(function () {
+
     // Sign In / Sign Up with Socialite Route
     Route::get('/auth/{provider}', [AuthController::class, 'redirectToProvider']);
     Route::get('/auth/{provider}/callback', [AuthController::class, 'handleProviderCallback']);
@@ -45,15 +45,15 @@ Route::middleware('guest')->group(function() {
 });
 
 // Route login and profile
-Route::middleware('auth')->group(function() {
+Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/profile', function() {
+    Route::get('/profile', function () {
         return inertia("Main/Profile");
     });
 });
 
 // Route Dashboard
-Route::middleware(['auth', 'role_or_permission:Admin|Writer'])->prefix('dashboard')->name('dashboard.')->group(function(){
+Route::middleware(['auth', 'role_or_permission:Admin|Writer'])->prefix('dashboard')->name('dashboard.')->group(function () {
     // Route Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     // Route Articles
@@ -84,6 +84,6 @@ Route::middleware(['auth', 'role_or_permission:Admin|Writer'])->prefix('dashboar
     });
 });
 
-// Route::get('/user/{user}', function(User $user) {
-//     dd($user->only('id', 'username', 'fullname'));
-// });
+Route::get('/user/{user}', function (User $user) {
+    dd($user->only('id', 'nickname', 'email'));
+});
