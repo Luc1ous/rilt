@@ -52,7 +52,7 @@ export default function Create({ categories }) {
             </div>
             <div className="my-4">
               <Label>Body</Label>
-              <Textarea id='body' className={errors.body ? 'border-red-500' : ''} value={data.body} onChange={e => setData('body', e.target.value)} placeholder='Type your content here...'></Textarea>
+              <Textarea id='body' rows={10} className={errors.body ? 'border-red-500' : ''} value={data.body} onChange={e => setData('body', e.target.value)} placeholder='Type your content here...'></Textarea>
               {errors.body && <p className='text-red-500 text-xs mt-1'>{errors.body}</p>}
             </div>
             <Button type='submit'>Create</Button>

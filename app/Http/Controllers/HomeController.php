@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
-use Exception;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

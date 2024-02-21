@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Spatie\LaravelMarkdown\MarkdownRenderer;
 
 class ArticleController extends Controller
 {
@@ -43,6 +44,10 @@ class ArticleController extends Controller
         $thumbnail = $request->file('thumbnail');
         $thumbnailName = $thumbnail->hashName();
         $thumbnail->move('storage/articles', $thumbnailName);
+
+        $data['body'] = app(MarkdownRenderer::class)
+                        ->highlightTheme('github-dark')
+                        ->toHtml($request->body);
 
         $data['thumbnail'] = $thumbnailName;
         $data['user_id'] = auth()->user()->id;
