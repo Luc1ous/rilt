@@ -34,13 +34,21 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
+            'thumbnail' => 'nullable|mimes:png,jpg,svg',
             'title' => 'required|min:10',
             'category_id' => 'required',
             'body' => 'required'
         ]);
 
+        $thumbnail = $request->file('thumbnail');
+        $thumbnailName = $thumbnail->hashName();
+        $thumbnail->move('storage/articles', $thumbnailName);
+
+        $data['thumbnail'] = $thumbnailName;
         $data['user_id'] = auth()->user()->id;
+
         Article::create($data);
+        
         return redirect()->route('dashboard.articles.index')->with('success', 'Article created successfully');
     }
 
@@ -49,7 +57,6 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        
     }
 
     /**
