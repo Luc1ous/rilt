@@ -1,6 +1,7 @@
 import React from 'react'
 import Default from '@/Layout/Default'
 import { Head, Link } from '@inertiajs/inertia-react'
+import parse from 'html-react-parser'
 
 export default function Article({ article }) {
   return (
@@ -19,7 +20,7 @@ export default function Article({ article }) {
         <img className='w-full mx-auto aspect-auto rounded-2xl' src={article.thumbnail} alt="" />
 
         <p className='whitespace-pre-line text-lg text-gray-700 mt-10'>
-          {article.body}
+          {parse(article.body)}
         </p>
 
         <div className='my-8'>
