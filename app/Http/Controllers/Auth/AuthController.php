@@ -14,11 +14,13 @@ use Laravel\Socialite\Facades\Socialite;
 class AuthController extends Controller
 {
 
-    public function redirectToProvider($provider) {
+    public function redirectToProvider($provider)
+    {
         return Socialite::driver($provider)->redirect();
     }
 
-    public function handleProviderCallback($provider) {
+    public function handleProviderCallback($provider)
+    {
         $user = Socialite::driver($provider)->user();
         $checkUser = User::updateOrCreate(
             [
@@ -35,12 +37,14 @@ class AuthController extends Controller
         return redirect()->route('home');
     }
 
-    public function signin() {
+    public function signin()
+    {
         session()->put('prev_url', url()->previous());
         return inertia('Auth/SignIn');
     }
 
-    public function authenticate(SignInRequest $request){
+    public function authenticate(SignInRequest $request)
+    {
         $prev_url = session()->pull('prev_url', 'default');
 
         if(Auth::attempt($request->all())) {
@@ -51,13 +55,15 @@ class AuthController extends Controller
         }
     }
 
-    public function signup() {
+    public function signup()
+    {
         session()->put('prev_url', url()->previous());
         return inertia('Auth/SignUp');
     }
 
-    public function register(SignUpRequest $request) {
-        
+    public function register(SignUpRequest $request)
+    {
+
         $user = User::create($request->validated());
 
         $prev_url = session()->pull('prev_url', 'default');
@@ -66,7 +72,8 @@ class AuthController extends Controller
         return redirect()->to($prev_url);
     }
 
-    public function logout() {
+    public function logout()
+    {
         Auth::logout();
         return back();
     }
