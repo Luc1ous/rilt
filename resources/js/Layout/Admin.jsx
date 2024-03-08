@@ -1,5 +1,6 @@
 import { Button } from '@/Components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/Components/ui/dropdown-menu'
+import { Toaster } from '@/Components/ui/toaster'
 import { Head, Link, usePage } from '@inertiajs/inertia-react'
 import { ArchiveIcon, CardStackPlusIcon, ClipboardIcon, DashboardIcon, ExitIcon, HomeIcon, LockOpen1Icon, MixIcon, PersonIcon, RocketIcon } from '@radix-ui/react-icons'
 import React from 'react'
@@ -125,6 +126,7 @@ export default function Admin({ children, title }) {
         <div className="w-full min-h-screen pt-10 px-4 sm:px-6 md:px-8 lg:ps-72">
           <header>
             {children}
+            <Toaster />
           </header>
         </div>
 
