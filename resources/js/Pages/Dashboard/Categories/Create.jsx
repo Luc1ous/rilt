@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Admin from '@/Layout/Admin'
 import { Card, CardContent } from '@/Components/ui/card'
 import { Label } from '@/Components/ui/label'
 import { Input } from '@/Components/ui/input'
 import { Textarea } from '@/Components/ui/textarea'
 import { Button } from '@/Components/ui/button'
-import { Inertia } from '@inertiajs/inertia'
 import { useForm } from '@inertiajs/inertia-react'
-import { Progress } from '@/Components/ui/progress'
+import { useToast } from '@/Components/ui/use-toast'
 
 export default function Create({ errors }) {
-  const { data, setData, post, progress } = useForm({
+  const { toast } = useToast()
+  const { data, setData, post } = useForm({
     image: '',
     name: '',
     description: '',
@@ -18,7 +18,9 @@ export default function Create({ errors }) {
 
   function submit(e) {
     e.preventDefault()
-    post('/dashboard/categories')
+    post('/dashboard/categories', {
+      onSuccess: () => toast({ title: 'Success', description: 'Category created successfully' })
+    })
   }
 
   return (

@@ -7,9 +7,11 @@ import { Button } from '@/Components/ui/button'
 import { Textarea } from '@/Components/ui/textarea'
 import { Inertia } from '@inertiajs/inertia'
 import { useForm, usePage } from '@inertiajs/inertia-react'
+import { useToast } from '@/Components/ui/use-toast'
 
 export default function Create({ categories }) {
   const { errors } = usePage().props
+  const { toast } = useToast()
   const { data, setData, post, progress } = useForm({
     thumbnail: '',
     title: '',
@@ -19,7 +21,9 @@ export default function Create({ categories }) {
 
   function submit(e) {
     e.preventDefault()
-    post('/dashboard/articles')
+    post('/dashboard/articles', {
+      onSuccess: () => toast({ title: "Success", description: "Article created successfully" })
+    })
   }
 
   return (

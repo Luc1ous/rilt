@@ -1,18 +1,15 @@
 import React from 'react'
 import Admin from '@/Layout/Admin'
-import { Link, usePage } from '@inertiajs/inertia-react'
+import { Link } from '@inertiajs/inertia-react'
 import { Button } from '@/Components/ui/button'
-import { CheckCircledIcon, Pencil2Icon, PlusIcon, TrashIcon } from '@radix-ui/react-icons'
+import { Pencil2Icon, PlusIcon, TrashIcon } from '@radix-ui/react-icons'
 import { Card, CardContent } from '@/Components/ui/card'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/Components/ui/table'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/Components/ui/dialog'
-import { Alert, AlertDescription, AlertTitle } from '@/Components/ui/alert'
 import Empty from '@/Components/Empty'
 import { Inertia } from '@inertiajs/inertia'
 
 export default function Index({ categories }) {
-  const { flash } = usePage().props
-
   const handleDelete = async (category) => {
     Inertia.delete(`/dashboard/categories/${category}`)
   }
@@ -27,14 +24,6 @@ export default function Index({ categories }) {
           Create new category
         </Button>
       </Link>
-
-      {flash.success && (
-        <Alert className='text-green-600'>
-          <CheckCircledIcon />
-          <AlertTitle>Success</AlertTitle>
-          <AlertDescription>{flash.success}</AlertDescription>
-        </Alert>
-      )}
 
       <Card className='my-4'>
         <CardContent className='p-6'>

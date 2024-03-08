@@ -4,17 +4,14 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { Button } from '@/Components/ui/button'
 import { Card, CardContent, CardFooter } from '@/Components/ui/card'
 import Pagination from '@/Components/Pagination'
-import { Link, usePage } from '@inertiajs/inertia-react'
-import { CheckCircledIcon, Pencil2Icon, PlusIcon, TrashIcon } from '@radix-ui/react-icons'
-import { Alert, AlertDescription, AlertTitle } from '@/Components/ui/alert'
+import { Link } from '@inertiajs/inertia-react'
+import { Pencil2Icon, PlusIcon, TrashIcon } from '@radix-ui/react-icons'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/Components/ui/dialog'
 import { DialogTrigger } from '@radix-ui/react-dialog'
 import { Inertia } from '@inertiajs/inertia'
 import Empty from '@/Components/Empty'
 
 export default function Index({ articles }) {
-  const { flash } = usePage().props
-
   const handleDelete = async (article) => {
     Inertia.delete(`/dashboard/articles/${article}`)
   }
@@ -30,14 +27,6 @@ export default function Index({ articles }) {
           Create new article
         </Button>
       </Link>
-
-      {flash.success &&
-        <Alert className='text-green-600 mb-6'>
-          <CheckCircledIcon />
-          <AlertTitle>Success</AlertTitle>
-          <AlertDescription>{flash.success}</AlertDescription>
-        </Alert>
-      }
 
       <div className='mb-10'>
         <Card>

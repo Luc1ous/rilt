@@ -7,9 +7,11 @@ import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, usePage } from '@inertiajs/inertia-react'
 import { Button } from '@/Components/ui/button'
 import { GitHubLogoIcon } from '@radix-ui/react-icons'
+import { useToast } from '@/Components/ui/use-toast'
 
 export default function Signin() {
   const { errors } = usePage().props
+  const { toast } = useToast()
   const [values, setValues] = useState({
     email: '',
     password: ''
@@ -17,14 +19,16 @@ export default function Signin() {
 
   function handleChange(e) {
     setValues(values => ({
-      ...values, 
+      ...values,
       [e.target.id]: e.target.value
     }))
   }
 
   function handleSubmit(e) {
     e.preventDefault()
-    Inertia.post('/signin', values)
+    Inertia.post('/signin', values, {
+      onSuccess: () => toast({ variant:'secondary', title: 'Success', description: "Sign in successfully" }),
+    })
   }
 
   return (
