@@ -7,7 +7,7 @@ export default function ArticleCard({ article }) {
 
   return (
     <Card className='overflow-hidden'>
-      <img className='w-full' src={article.thumbnail} alt="" />
+      <img className='w-full aspect-video' src={article.thumbnail} alt="" />
       <CardHeader>
         <CardTitle className='text-xl capitalize line-clamp-2 hover:text-blue-600 hover:underline'>
           <Link href={`/articles/${article.slug}`}>{article.title}</Link>

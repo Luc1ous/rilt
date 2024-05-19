@@ -17,7 +17,7 @@ export default function Article({ article }) {
             Author : <Link href={`/user/${article.author.nickname}`} className='hover:text-blue-500 hover:underline'>@{article.author.nickname}</Link>
           </div>
         </p>
-        <img className='w-full mx-auto aspect-auto rounded-2xl' src={article.thumbnail} alt="" />
+        <img className='w-full mx-auto aspect-video rounded-2xl' src={article.thumbnail} alt="" />
 
         <p className='whitespace-pre-line prose leading-loose text-justify text-lg text-gray-700 mt-10'>
           {parse(article.body)}
