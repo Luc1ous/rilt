@@ -12,7 +12,7 @@ import { useToast } from '@/Components/ui/use-toast'
 export default function Create({ categories }) {
   const { errors } = usePage().props
   const { toast } = useToast()
-  const { data, setData, post, progress } = useForm({
+  const { data, setData, post, processing } = useForm({
     thumbnail: '',
     title: '',
     category_id: '',
@@ -59,7 +59,7 @@ export default function Create({ categories }) {
               <Textarea id='body' rows={10} className={errors.body ? 'border-red-500' : ''} value={data.body} onChange={e => setData('body', e.target.value)} placeholder='Type your content here...'></Textarea>
               {errors.body && <p className='text-red-500 text-xs mt-1'>{errors.body}</p>}
             </div>
-            <Button type='submit'>Create</Button>
+            <Button disabled={processing} type='submit'>Create</Button>
           </form>
         </CardContent>
       </Card>
