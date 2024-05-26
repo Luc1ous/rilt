@@ -31,7 +31,7 @@ class HomeController extends Controller
             $article->load(['category', 'author']);
             return inertia('Main/Article', compact('article'));
         } else {
-            abort(404);
+            abort(403);
         }
     }
 
