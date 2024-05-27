@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
         ]);
         
         $superadmin = Role::create(['name' => 'Super Admin']);
+        $admin = Role::create(['name' => 'Admin']);
+        $writer = Role::create(['name' => 'Writer']);
 
         $user->assignRole($superadmin);
     }
