@@ -33,10 +33,10 @@ export default function Admin({ children, title }) {
                   <DropdownMenuLabel>Signed in as {auth.user.email}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem className='flex justify-start gap-4'>
-                    <a href='/' className='flex justify-start items-center gap-4'>
+                    <Link href='/' className='flex justify-start items-center gap-4'>
                       <HomeIcon />
                       Homepage
-                    </a>
+                    </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <Link className='text-red-600 flex justify-start items-center gap-4'>

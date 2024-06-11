@@ -77,7 +77,7 @@ export default function Navbar() {
                   <Link href='/profile'>Profile</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <a href='/dashboard'>Dashboard</a>
+                  <Link href='/dashboard'>Dashboard</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
