@@ -41,15 +41,17 @@ class ArticleController extends Controller
             'body' => 'required'
         ]);
 
-        $thumbnail = $request->file('thumbnail');
-        $thumbnailName = $thumbnail->hashName();
-        $thumbnail->move('storage/articles', $thumbnailName);
+        if($request->hasFile('thumbnail')) {
+            $thumbnail = $request->file('thumbnail');
+            $thumbnailName = $thumbnail->hashName();
+            $thumbnail->move('storage/articles', $thumbnailName);
+            $data['thumbnail'] = $thumbnailName;
+        }
 
         $data['body'] = app(MarkdownRenderer::class)
                         ->highlightTheme('github-dark')
                         ->toHtml($request->body);
 
-        $data['thumbnail'] = $thumbnailName;
         $data['user_id'] = auth()->user()->id;
 
         Article::create($data);
