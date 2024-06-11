@@ -35,7 +35,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'thumbnail' => 'nullable|mimes:png,jpg,svg',
+            'thumbnail' => 'required|mimes:png,jpg,svg|max:2048',
             'title' => 'required|min:10',
             'category_id' => 'required',
             'body' => 'required'
