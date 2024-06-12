@@ -13,9 +13,15 @@ class HomeController extends Controller
         return inertia('Main/Home');
     }
 
-    public function articles()
+    public function articles(Request $request)
     {
-        $articles = Article::with('category')->published()->latest()->paginate(9);
+        if($request->q) {
+            $search = $request->q;
+            $articles = Article::with('category')->where('title', 'like', "%{$search}%")->published()->latest()->paginate(9);
+        } else {
+            $articles = Article::with('category')->published()->latest()->paginate(9);
+        }
+
         return inertia('Main/Articles', compact('articles'));
     }
 
