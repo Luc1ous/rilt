@@ -10,6 +10,12 @@ export default function Article({ article }) {
         <title>{article.title}</title>
       </Head>
       <div className='max-w-3xl mx-auto md:p-6'>
+        <div className='flex items-center mb-6 text-gray-500 hover:text-gray-700 transition-all ease-in-out space-x-3'>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+          </svg>
+          <Link href='/articles'>Back to articles</Link>
+        </div>
         <h2 className='capitalize text-2xl md:text-4xl font-bold'>{article.title}</h2>
         <p className='my-8 flex justify-between text-sm md:text-base font-normal text-gray-600'>
           {article.created_at}
