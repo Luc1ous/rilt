@@ -27,7 +27,7 @@ export default function Signin() {
   function handleSubmit(e) {
     e.preventDefault()
     Inertia.post('/signin', values, {
-      onSuccess: () => toast({ variant:'secondary', title: 'Success', description: "Sign in successfully" }),
+      onSuccess: () => toast({ title: 'Success', description: "Sign in successfully" }),
     })
   }
 
